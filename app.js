@@ -98,6 +98,10 @@ app.use((req,res,next) =>{
 //     res.send(registeredUser);
 // });
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 app.use("/listings",listingRouter);                    //route to listings //parent route
 app.use("/listings/:id/reviews",reviewRouter);          //route to reviews
 app.use("/",userRouter);        
@@ -115,9 +119,6 @@ app.use((err,req,res,next) =>{
 });
 
 
-app.listen(8080,()=>{
-    console.log("Server is listening to 8080");
-});
 
 const PORT = process.env.PORT || 3000;
 
